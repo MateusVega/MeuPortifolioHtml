@@ -7,6 +7,32 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-
+    <main>
+      <aside id="main">
+        <h1>Logar</h1>
+        <form action="">
+          <label for="username">Usuário</label>
+          <input type="text" placeholder="Usuário" id="username" name="username">
+          <label for="password">Senha</label>
+          <input type="text" placeholder="Senha" id="password" name="password">
+          <section style="width: 100%; position: absolute; bottom: 10vh;">
+            <button type="submit">Login</button>
+            <span>
+              <span id="span_lembre">
+                <input type="checkbox" name="lembre-se" id="lembre-se">
+                <label for="lembre-se">Lembre-se de mim</label>
+              </span>
+              <a href="reset/password_reset.html">Esqueci a senha</a>
+            </span>
+            <a href="cadastrar.html" id="change">Cadastro</a>
+          </section>
+        </form>
+      </aside>
+      <aside id="aside">
+        <h1>LOGIN</h1>
+        <p>Não tem uma conta?</p>
+        <a href="cadastrar.html">Cadastrar</a>
+      </aside>
+    </main>
   </body>
 </html>
