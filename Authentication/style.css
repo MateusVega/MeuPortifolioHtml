@@ -155,10 +155,6 @@ aside#aside a:hover{
     transform: scale(1.1);
     background-color: var(--az1);
 }
-aside#aside a:hover{
-    transform: scale(1.1);
-    background-color: var(--az1);
-}
 
 a#change{
     display: none;

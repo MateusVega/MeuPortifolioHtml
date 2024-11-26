@@ -7,6 +7,29 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-
+    <header>
+      <h1>MeuPortifolio</h1>
+      <div>
+        <h1 id="name">Mateus Vega</h1>
+        <img id="avatar">
+      </div>
+    </header>
+    <main>
+      <iframe src="https://www.rhuanbello.com/" frameborder="0" style="width: 97%; height: 95%;"></iframe>
+    </main>
+    <aside>
+      <h1>Personalize</h1>
+      <div>
+        <p>Clique em um elemento para edita-lo</p>
+      </div>
+      <a>
+        Salvar
+      </a>
+    </aside>
+    <script src="https://mateusvega.github.io/AvatarGenerator/AvatarGenerator.mjs"></script>
+    <script>
+      const avatarURL = AvatarGenerator.generateAvatar(document.getElementById('name').innerText);
+      document.getElementById("avatar").src = avatarURL;
+    </script>
   </body>
 </html>

@@ -15,14 +15,10 @@
     font-family: "Questrial", sans-serif;
 }
 
-a{
-    cursor: pointer;
-}
 
 body{
     width: 100vw;
     height: 100vh;
-    background-color: blue;
     overflow: hidden;
 }
 
@@ -63,6 +59,10 @@ main{
     width: 100vw;
     height: 90vh;
     background-color: #FFFFFF;
+}
+
+main a{
+    cursor: pointer;
 }
 
 main aside#main{
