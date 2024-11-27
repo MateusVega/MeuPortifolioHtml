@@ -19,7 +19,7 @@
 body{
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 header{
@@ -59,8 +59,9 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 77vw;
-    height: 90vh;
+    width: 75vw;
+    margin: 1vh 1vw;
+    height: 88vh;
 }
 
 aside{
@@ -74,6 +75,11 @@ aside{
     width: 23vw;
     height: 90vh;
     background-color: var(--br2);
+}
+
+aside p{
+    font-size: 1.3s  em;
+    text-align: center;
 }
 
 aside a{
@@ -91,4 +97,47 @@ aside a{
 aside a:hover{
     transform: scale(1.1);
     background-color: var(--az1);
+    color: #fafafa;
+}
+
+@media screen and (max-width: 800px) {
+    header > h1{
+        font-size: 1.8em;
+    }
+    
+    header div h1{
+        font-size: 1.1em;
+    }
+
+    aside p{
+        font-size: 0.7em;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    header{
+        height: 8vh;
+    }
+
+    header > h1{
+        font-size: 1.7em;
+    }
+    
+    header div h1{
+        font-size: 1em;
+    }
+
+    aside{
+        height: 20vh;
+        width: 100vw;
+    }
+
+    aside p{
+        font-size: 0.9em;
+    }
+
+    main{
+        height: 72vh;
+        width: 98vw;
+    }
 }
