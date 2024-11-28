@@ -16,13 +16,13 @@
 }
 
 
-body{
+body.ap{
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
 }
 
-header{
+header.ap{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -31,40 +31,38 @@ header{
     background-color: #FFFFFF;
 }
 
-header > h1{
+header.ap > h1.ap{
     font-size: 2em;
     font-weight: bolder;
     color: var(--az1);
     margin-left: 20px;
 }
 
-header div{
+header.ap div.ap{
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
-header div img{
+header.ap div.ap img.ap{
     height: 6vh;
     border-radius: 100%;
     margin-right: 20px;
 }
 
-header div h1{
+header.ap div.ap h1.ap{
     font-size: 1.2em;
     font-weight: normal;
 }
 
-main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+main.ap{
     width: 75vw;
-    margin: 1vh 1vw;
     height: 88vh;
+    margin: 1vh 1vw;
+    border: 2px solid var(--br1);
 }
 
-aside{
+aside.ap{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -77,12 +75,12 @@ aside{
     background-color: var(--br2);
 }
 
-aside p{
+aside.ap p.ap{
     font-size: 1.3s  em;
     text-align: center;
 }
 
-aside a{
+aside.ap a.ap{
     cursor: pointer;
     color: var(--az2);
     background-color: white;
@@ -94,49 +92,49 @@ aside a{
     transition: transform 0.2s, background-color 0.15s ease-in-out;
 }
 
-aside a:hover{
+aside.ap a.ap:hover{
     transform: scale(1.1);
     background-color: var(--az1);
     color: #fafafa;
 }
 
 @media screen and (max-width: 800px) {
-    header > h1{
+    header.ap > h1.ap{
         font-size: 1.8em;
     }
     
-    header div h1{
+    header.ap div.ap h1.ap{
         font-size: 1.1em;
     }
 
-    aside p{
+    aside.ap p.ap{
         font-size: 0.7em;
     }
 }
 
 @media screen and (max-width: 600px) {
-    header{
+    header.ap{
         height: 8vh;
     }
 
-    header > h1{
+    header.ap > h1.ap{
         font-size: 1.7em;
     }
     
-    header div h1{
+    header.ap div.ap h1.ap{
         font-size: 1em;
     }
 
-    aside{
+    aside.ap{
         height: 20vh;
         width: 100vw;
     }
 
-    aside p{
+    aside.ap p.ap{
         font-size: 0.9em;
     }
 
-    main{
+    main.ap{
         height: 72vh;
         width: 98vw;
     }
