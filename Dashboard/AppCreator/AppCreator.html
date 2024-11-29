@@ -20,39 +20,77 @@
       <div id="body">
         <h1>Olá</h1>
         <p>Esse é o meu portifolio</p>
+        <a>Esse é um link</a>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmW7XqQW_MjH-hB5yMjdXZtc3gpvVBjwmtAw&s">
       </div>
       <!--Fim Template-->
     </main>
     <aside class="ap">
       <h1 class="ap">Personalize</h1>
       <div class="ap">
-        <p class="ap">Clique em um elemento para edita-lo</p>
+        <p class="ap" id="aviso">Clique em um elemento para edita-lo</p>
         <form action="" style="display: none; flex-direction: column; align-items: center;">
-          <h3 id="name_obj"></h3>
-          <input type="text" name="text" placeholder="text">
-          <input type="text" name="color" placeholder="color">
-          <input type="text" name="bg" placeholder="background-color">
+          
         </form>
       </div>
       <a class="ap">Salvar</a>
     </aside>
-
+    <script src="https://mateusvega.github.io/ElementClassifier/ElementClassifier.mjs"></script>
     <script src="https://mateusvega.github.io/AvatarGenerator/AvatarGenerator.mjs"></script>
     <script>
+      forms_input = {
+        'Text': [
+          '<input type="text" name="text" placeholder="text" id="text">',
+          '<input type="text" name="color" placeholder="color" id="color">',
+        ],
+        'Div': [
+          '<input type="text" name="bg" placeholder="background-color" id="bg">',
+        ],
+        'Img': [
+          '<input type="text" name="src" placeholder="image-source" id="src">',
+        ],
+        'Link': [
+          '<input type="text" name="text" placeholder="text" id="text">',
+          '<input type="text" name="color" placeholder="color" id="color">',
+          '<input type="text" name="link" placeholder="link" id="link">',
+        ],
+      };
+    
+      const avatarURL = AvatarGenerator.generateAvatar(document.getElementById('name').innerText);
+      document.getElementById("avatar").src = avatarURL;
+    
       const main = document.querySelector("main.ap");
       const child = Array.from(main.getElementsByTagName('*'));
     
-      child.forEach(function(element) {
+      let form = document.querySelector('form');
+    
+      child.forEach(function (element) {
         element.onclick = function (event) {
           event.stopPropagation();
-          document.querySelector('form').style.display = 'flex'
-          document.getElementById('name_obj').innerText = `${element.tagName}(${element.innerText})`
+          document.querySelector('p#aviso').style.display = 'none';
+          document.querySelector('form').style.display = 'flex';
+          document.querySelector('form').innerHTML = '<h3 id="name_obj"></h3>';
+          
+          if (ElementClassifier.classify(element) == 'Text' || ElementClassifier.classify(element) == 'Link') {
+            document.getElementById('name_obj').innerText = `${element.tagName}(${element.innerText})`;
+          } else {
+            document.getElementById('name_obj').innerText = `${element.tagName}`;
+          }
+          
+          let input_type = forms_input[ElementClassifier.classify(element)];
+          input_type.forEach(function (input) {
+            document.querySelector('form').innerHTML += input;
+          });
+    
+          let inputs = Array.from(form.querySelectorAll('input'));
+          inputs.forEach(function (inputElement) {
+            inputElement.onchange = function (event) {
+              alert(`O valor do campo mudou para: ${event.target.value}`);
+            };
+          });
         };
       });
-    </script>    
-    <script>
-      const avatarURL = AvatarGenerator.generateAvatar(document.getElementById('name').innerText);
-      document.getElementById("avatar").src = avatarURL;
     </script>
+    
   </body>
 </html>
