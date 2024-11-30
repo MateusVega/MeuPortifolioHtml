@@ -33,18 +33,24 @@
           
         </form>
       </div>
-      <a class="ap">Salvar</a>
+      <div>
+        <p>Elementos</p>
+        <ul id="elementos">
+          
+        </ul>
+      </div>
     </aside>
     <script src="https://mateusvega.github.io/ElementClassifier/ElementClassifier.mjs"></script>
     <script src="https://mateusvega.github.io/AvatarGenerator/AvatarGenerator.mjs"></script>
     <script>
+      elements = []
       forms_input = {
         'Text': [
           '<input type="text" name="text" placeholder="text" id="text">',
           '<input type="text" name="color" placeholder="color" id="color">',
         ],
         'Div': [
-          '<input type="text" name="bg" placeholder="background-color" id="bg">',
+          '<input type="text" name="background-color" placeholder="background-color" id="background-color">',
         ],
         'Img': [
           '<input type="text" name="src" placeholder="image-source" id="src">',
@@ -52,7 +58,7 @@
         'Link': [
           '<input type="text" name="text" placeholder="text" id="text">',
           '<input type="text" name="color" placeholder="color" id="color">',
-          '<input type="text" name="link" placeholder="link" id="link">',
+          '<input type="text" name="href" placeholder="link" id="href">',
         ],
       };
     
@@ -64,6 +70,19 @@
     
       let form = document.querySelector('form');
     
+      var tagName = ""
+
+      function add_element(){
+        value_list = []
+        let inputs = Array.from(form.querySelectorAll('input'));
+        inputs.forEach(function (inputElement) {
+          value_list.push(inputElement.value)
+        })
+        document.getElementById('elementos').innerHTML += `<li>${tagName}: ${value_list}</li>`
+        let object = [tagName, value_list]
+        elements.push(object)
+      }
+
       child.forEach(function (element) {
         element.onclick = function (event) {
           event.stopPropagation();
@@ -71,6 +90,8 @@
           document.querySelector('form').style.display = 'flex';
           document.querySelector('form').innerHTML = '<h3 id="name_obj"></h3>';
           
+          tagName = element.tagName
+
           if (ElementClassifier.classify(element) == 'Text' || ElementClassifier.classify(element) == 'Link') {
             document.getElementById('name_obj').innerText = `${element.tagName}(${element.innerText})`;
           } else {
@@ -81,11 +102,23 @@
           input_type.forEach(function (input) {
             document.querySelector('form').innerHTML += input;
           });
+
+          document.querySelector('form').innerHTML += '<a class="ap" onclick="add_element()">Salvar</a>';
     
           let inputs = Array.from(form.querySelectorAll('input'));
           inputs.forEach(function (inputElement) {
             inputElement.onchange = function (event) {
-              alert(`O valor do campo mudou para: ${event.target.value}`);
+              if (inputElement.name == 'text'){
+                element.innerHTML = event.target.value;
+              } else if (inputElement.name == 'color'){
+                element.style.color = event.target.value;
+              } else if (inputElement.name == 'background-color'){
+                element.style.backgroundColor = event.target.value;
+              } else if (inputElement.name == 'href'){
+                element.href = event.target.value;
+              } else if (inputElement.name == 'src'){
+                element.src = event.target.value;
+              }
             };
           });
         };
